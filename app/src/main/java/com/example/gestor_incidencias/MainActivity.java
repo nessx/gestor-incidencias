@@ -30,8 +30,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if ((loguser.getText().toString().trim().equals("admin")) && (logpass.getText().toString().trim().equals("1234"))){
-                    Intent intent = new Intent (MainActivity.this, iniciomenu.class);
-                    startActivity(intent);
+                    gotomenu();
                 }
                 else{
                     Snackbar.make(v, "Usuario o contraseña incorrecto!", Snackbar.LENGTH_LONG)
@@ -40,5 +39,9 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+    public void gotomenu(){
+        Intent intent = new Intent (MainActivity.this, iniciomenu.class);
+        startActivity(intent);
     }
 }
