@@ -14,5 +14,7 @@ public class iniciomenu extends AppCompatActivity {
 
         //codigo
 
+        // fragments pasar datos tutorals
+
     }
 }
