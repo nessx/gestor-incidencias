@@ -15,7 +15,7 @@
         android:ems="10"
         android:hint="Titulo"
         android:inputType="textPersonName"
-        android:textColorHint="#FFFFFF"
+        android:textColorHint="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -25,20 +25,22 @@
 
     <Spinner
         android:id="@+id/urgencia"
-        android:layout_width="41dp"
-        android:layout_height="52dp"
+        android:layout_width="208dp"
+        android:layout_height="47dp"
+        android:outlineAmbientShadowColor="#000000"
+        android:outlineSpotShadowColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.279"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.399" />
+        app:layout_constraintVertical_bias="0.438" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:text="Agregar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -48,15 +50,29 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="149dp"
-        android:layout_height="53dp"
+        android:layout_width="97dp"
+        android:layout_height="28dp"
         android:text="Urgencia"
         android:textColor="#000000"
-        android:textSize="30sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.587"
+        app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.411" />
+        app:layout_constraintVertical_bias="0.386" />
+
+    <TextView
+        android:id="@+id/prueba"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.456"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.056" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
