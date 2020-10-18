@@ -1,6 +1,7 @@
 package com.example.gestor_incidencias.clases;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -18,14 +19,15 @@ import androidx.fragment.app.Fragment;
 import com.example.gestor_incidencias.*;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class agregar extends AppCompatActivity {
+public class agregar extends AppCompatActivity implements Serializable {
     EditText titulo;
     Button add;
     public Spinner prioridad;
-    public ArrayList<arrayli> incidencias = new ArrayList<>();
+    ArrayList<incidencia> incidencias;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,8 @@ public class agregar extends AppCompatActivity {
         //lo que tendria que devolver
         titulo = findViewById(R.id.titulo);
         prioridad = findViewById(R.id.urgencia);
+
+        incidencias = getIntent().getParcelableArrayListExtra("array_incidencias");
 
         //codigo
         String[] Valoracion = new String[]{"Alta", "Mediana", "Baja"};
@@ -50,18 +54,25 @@ public class agregar extends AppCompatActivity {
             public void onClick(View v) {
                 String title = titulo.getText().toString().trim();
                 String urgencia = prioridad.getSelectedItem().toString();
+                incidencias.add(new incidencia(title, urgencia));
 
-
-                incidencias.add(new arrayli(title, urgencia));
-                alerta("Informacion", "usuario agregado correctemente");
+                int counter = incidencias.size();
+                if (counter>=1) {
+                    alerta("Informacion", "usuario agregado correctemente");
+                }
+                else{
+                    alerta("ERROR", "No se ha podido agregar la alerta");
+                }
             }
         });
 
-        // fragments pasar datos tutorals
-        Fragment f = new Fragment();
-        Bundle bundle = new Bundle();
-        bundle.putParcelableArrayList("list", (ArrayList<? extends Parcelable>) incidencias);
-        f.setArguments(bundle);
+    }
+
+    public void onBackPressed(){
+        Intent intent = new Intent();
+        intent.putParcelableArrayListExtra("array_incidencias", incidencias);
+        setResult(RESULT_OK, intent);
+        finish();
     }
 
     //alerta que recibe un titulo y un mensaje

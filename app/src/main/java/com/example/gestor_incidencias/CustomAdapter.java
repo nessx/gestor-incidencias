@@ -9,19 +9,15 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.gestor_incidencias.clases.arrayli;
+import com.example.gestor_incidencias.clases.incidencia;
 
 import java.util.ArrayList;
 
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHolder> {
+    ArrayList<incidencia> arraylist;
 
-    //se que lo de abajo es una cagada, pero estoy viendo videos de POO para entender un poco mas sobre arrayList y arreglar la pequeña cagadita. :)
-    ArrayList<arrayli> arraylist;
-    Context context;
-
-    public CustomAdapter(Context context, ArrayList<arrayli> arraylist) {
-        this.context = context;
+    public CustomAdapter(ArrayList<incidencia> arraylist) {
         this.arraylist = arraylist;
     }
 
@@ -35,29 +31,24 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, final int position) {
-
+    public void onBindViewHolder(MyViewHolder holder, int position) {
         // set the data in items
-        holder.title.setText(arraylist.get(position).getitulo());
+        holder.titulo.setText(arraylist.get(position).getitulo());
         holder.urgencia.setText(arraylist.get(position).geturgencia());
     }
-
-
     @Override
     public int getItemCount() {
         return arraylist.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView title;
+        TextView titulo;
         TextView urgencia;
-
-
 
         public MyViewHolder(View itemView) {
             super(itemView);
 
-            title = itemView.findViewById(R.id.title);
+            titulo = itemView.findViewById(R.id.title);
             urgencia = itemView.findViewById(R.id.urgencia);
         }
     }

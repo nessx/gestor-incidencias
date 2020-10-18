@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.example.gestor_incidencias.clases.usuario;
 import com.google.android.material.snackbar.Snackbar;
 
 
@@ -29,7 +31,8 @@ public class MainActivity extends AppCompatActivity {
         logbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if ((loguser.getText().toString().trim().equals("admin")) && (logpass.getText().toString().trim().equals("1234"))){
+                usuario user = new usuario();
+                if ((loguser.getText().toString().trim().equals(user.getuser())) && (logpass.getText().toString().trim().equals(user.getpasswd()))){
                     gotomenu();
                 }
                 else{
