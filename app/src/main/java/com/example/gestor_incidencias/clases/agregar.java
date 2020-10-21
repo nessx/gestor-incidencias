@@ -2,26 +2,20 @@ package com.example.gestor_incidencias.clases;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 
 import com.example.gestor_incidencias.*;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class agregar extends AppCompatActivity implements Serializable {
     EditText titulo;
@@ -39,8 +33,6 @@ public class agregar extends AppCompatActivity implements Serializable {
         titulo = findViewById(R.id.titulo);
         prioridad = findViewById(R.id.urgencia);
 
-        incidencias = getIntent().getParcelableArrayListExtra("array_incidencias");
-
         //codigo
         String[] Valoracion = new String[]{"Alta", "Mediana", "Baja"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, Valoracion);
@@ -54,7 +46,8 @@ public class agregar extends AppCompatActivity implements Serializable {
             public void onClick(View v) {
                 String title = titulo.getText().toString().trim();
                 String urgencia = prioridad.getSelectedItem().toString();
-                incidencias.add(new incidencia(title, urgencia));
+
+                incidencias.add(title,urgencia);
 
                 int counter = incidencias.size();
                 if (counter>=1) {

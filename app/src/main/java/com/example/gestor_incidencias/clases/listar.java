@@ -14,19 +14,23 @@ import java.util.ArrayList;
 
 public class listar extends AppCompatActivity {
 
-    public ArrayList<incidencia> listaincidencias = new ArrayList<>();
+    //public ArrayList<incidencia> listaincidencias = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listar);
 
-        Intent recogerDatos = getIntent();
+
         ArrayList<incidencia> incidencias = getIntent().getParcelableArrayListExtra("array_incidencias");
+
+        /*
+        Intent recogerDatos = getIntent();
         int contador = recogerDatos.getIntExtra("contador", 0);
         for (int i=0;i<incidencias.size();i++){
-            listaincidencias.add(incidencias.get(i));
+
         }
+         */
 
 
 
@@ -40,7 +44,7 @@ public class listar extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(linearLayoutManager);
         //  call the constructor of CustomAdapter to send the reference and data to Adapter
-        CustomAdapter customAdapter = new CustomAdapter(listaincidencias);
+        CustomAdapter customAdapter = new CustomAdapter(incidencias);
         recyclerView.setAdapter(customAdapter); // set the Adapter to RecyclerView
     }
 
