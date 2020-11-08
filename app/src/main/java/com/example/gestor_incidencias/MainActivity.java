@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
                 else{
                     Snackbar.make(v, "Usuario o contraseña incorrecto!", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
-
                 }
             }
         });

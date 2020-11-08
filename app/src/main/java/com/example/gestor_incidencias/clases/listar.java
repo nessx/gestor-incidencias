@@ -1,51 +1,44 @@
 package com.example.gestor_incidencias.clases;
 
-import android.content.Intent;
+import android.annotation.TargetApi;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.gestor_incidencias.CustomAdapter;
 import com.example.gestor_incidencias.R;
+import com.example.gestor_incidencias.iniciomenu;
 
-import java.util.ArrayList;
+/**
+ * A simple {@link Fragment} subclass.
+ */
+@TargetApi(Build.VERSION_CODES.HONEYCOMB)
+public class listar extends Fragment {
 
-public class listar extends AppCompatActivity {
-
-    //public ArrayList<incidencia> listaincidencias = new ArrayList<>();
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.listar);
-
-
-        ArrayList<incidencia> incidencias = getIntent().getParcelableArrayListExtra("array_incidencias");
-
-        /*
-        Intent recogerDatos = getIntent();
-        int contador = recogerDatos.getIntExtra("contador", 0);
-        for (int i=0;i<incidencias.size();i++){
-
-        }
-         */
-
-
-
-        //ArrayList<? extends incidencia> incidencias = getIntent().getParcelableArrayListExtra("array_incidencias");
-
-
-
-        // get the reference of RecyclerView
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        // set a LinearLayoutManager with default vertical orientation
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
-        recyclerView.setLayoutManager(linearLayoutManager);
-        //  call the constructor of CustomAdapter to send the reference and data to Adapter
-        CustomAdapter customAdapter = new CustomAdapter(incidencias);
-        recyclerView.setAdapter(customAdapter); // set the Adapter to RecyclerView
+    public listar() {
+        // Required empty public constructor
     }
 
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        // Inflate the layout for this fragment
+        View listar = inflater.inflate(R.layout.fragment_listar, container, false);
+
+        RecyclerView recyclerView = (RecyclerView)listar.findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(listar.getContext()));
+
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, ((iniciomenu)getActivity()).arrayIncidencies);
+
+        recyclerView.setAdapter(adapter);
+
+
+        return listar;
+    }
 }

@@ -1,72 +1,45 @@
 package com.example.gestor_incidencias;
 
-import android.content.Intent;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import com.example.gestor_incidencias.clases.agregar;
 import com.example.gestor_incidencias.clases.incidencia;
-import com.example.gestor_incidencias.clases.listar;
 import com.example.gestor_incidencias.clases.usuario;
 
 import java.util.ArrayList;
 
 
 public class iniciomenu extends AppCompatActivity {
-    Button agregar,listar;
-    TextView test;
-    public ArrayList<incidencia> incidencias = new ArrayList<>();
+    TextView userview;
+    public ArrayList<incidencia> arrayIncidencies;
+
+    protected Fragment[] menuFragments;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        usuario user = new usuario();
         setContentView(R.layout.menu_inicio);
-        agregar = findViewById(R.id.agregar);
-        listar = findViewById(R.id.listar);
-        test = findViewById(R.id.test);
 
-        test.setText("Bienvenido/a "+user.getuser().toUpperCase());
+        usuario user = new usuario();
+        userview = findViewById(R.id.userview);
 
+        userview.setText("Bienvenido/a "+user.getuser().toUpperCase());
 
-        //codigo
-
-        agregar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent (iniciomenu.this, agregar.class);
-                intent.putExtra("array_incidencias", incidencias);
-                startActivityForResult(intent, 1);
-                //startActivity(intent);
-            }
-        });
-        listar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent (iniciomenu.this, listar.class);
-                intent.putExtra("array_incidencias", incidencias);
-                startActivityForResult(intent, 1);
-                //startActivity(intent);
-            }
-        });
-
-        // fragments pasar datos tutorals
+        arrayIncidencies = new ArrayList<>();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("arrayIncidencies", arrayIncidencies);
 
     }
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode==1){
-            if(resultCode == RESULT_OK){
-                incidencias = data.getParcelableArrayListExtra("array_incidencias");
-            }
-        }
-
-    }
 }

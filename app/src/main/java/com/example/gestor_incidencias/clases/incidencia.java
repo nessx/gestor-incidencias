@@ -2,30 +2,32 @@ package com.example.gestor_incidencias.clases;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 public class incidencia {
-    private String titulo;
-    private String urgencia;
+    protected String nom;
+    protected String prioritat;
 
-    public incidencia(String titulo, String urgencia) {
-        this.titulo = titulo;
-        this.urgencia = urgencia;
+    public incidencia(String nom, String prioritat){
+        this.nom = nom;
+        this.prioritat = prioritat;
     }
 
-    public void setitulo(String titulo) {
-        this.titulo = titulo;
+    public String getNom(){
+        return nom;
     }
 
-    public String getitulo() {
-        return titulo;
+    public String getPrioritat(){
+        return prioritat;
     }
 
-    public void seturgencia(String urgencia) {
-        this.urgencia = urgencia;
+    public void setNom(String newNom){
+        this.nom = newNom;
     }
 
-    public String geturgencia() {
-        return urgencia;
+    public void setPrioritat(String newPrioritat){
+        this.prioritat = newPrioritat;
     }
 
 }

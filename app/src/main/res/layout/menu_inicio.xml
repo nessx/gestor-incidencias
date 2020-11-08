@@ -7,61 +7,47 @@
     tools:context=".iniciomenu">
 
     <TextView
-        android:id="@+id/test"
+        android:id="@+id/userview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="USERVIEW"
         android:textColor="#000000"
         android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.06" />
+        app:layout_constraintVertical_bias="0.038" />
 
-    <Button
-        android:id="@+id/agregar"
-        android:layout_width="wrap_content"
+    <fragment
+        android:id="@+id/Menu"
+        android:name="com.example.gestor_incidencias.clases.menu"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Agregar incidencia"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.461"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.273" />
+        app:layout_constraintVertical_bias="0.146"
+        tools:layout="@layout/fragment_menu">
 
-    <Button
-        android:id="@+id/listar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Listar incidencia"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.461"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.395" />
+    </fragment>
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Eliminar todas las incidencias"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/fragmentID"
+        android:layout_width="409dp"
+        android:layout_height="681dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginRight="1dp"
+        android:layout_marginBottom="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.522" />
+        app:layout_constraintTop_toBottomOf="@+id/Menu">
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Ayuda"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.458"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.653" />
 </androidx.constraintlayout.widget.ConstraintLayout>
