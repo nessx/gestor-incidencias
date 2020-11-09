@@ -1,6 +1,7 @@
 package com.example.gestor_incidencias.clases;
 
 import android.annotation.TargetApi;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.gestor_incidencias.R;
+import com.example.gestor_incidencias.db.IncidenciaDBHelper;
 import com.example.gestor_incidencias.iniciomenu;
 
 /**
@@ -19,6 +21,10 @@ import com.example.gestor_incidencias.iniciomenu;
  */
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class listar extends Fragment {
+    //test
+    private IncidenciaDBHelper dbHelper;
+    private SQLiteDatabase db;
+    //end
 
     public listar() {
         // Required empty public constructor
@@ -35,6 +41,8 @@ public class listar extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(listar.getContext()));
 
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, ((iniciomenu)getActivity()).arrayIncidencies);
+
+        //RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, dbHelper.getIncidencias());
 
         recyclerView.setAdapter(adapter);
 

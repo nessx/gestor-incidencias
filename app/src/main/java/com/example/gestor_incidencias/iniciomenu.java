@@ -1,6 +1,7 @@
 package com.example.gestor_incidencias;
 
 import android.content.DialogInterface;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -16,11 +17,14 @@ import androidx.fragment.app.Fragment;
 import com.example.gestor_incidencias.clases.agregar;
 import com.example.gestor_incidencias.clases.incidencia;
 import com.example.gestor_incidencias.clases.usuario;
+import com.example.gestor_incidencias.db.IncidenciaDBHelper;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class iniciomenu extends AppCompatActivity {
+
     TextView userview;
     public ArrayList<incidencia> arrayIncidencies;
 
@@ -41,5 +45,6 @@ public class iniciomenu extends AppCompatActivity {
         bundle.putSerializable("arrayIncidencies", arrayIncidencies);
 
     }
+
 
 }

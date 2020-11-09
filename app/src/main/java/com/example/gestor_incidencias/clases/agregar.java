@@ -1,6 +1,7 @@
 package com.example.gestor_incidencias.clases;
 
 import android.content.DialogInterface;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
@@ -13,10 +14,14 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.gestor_incidencias.R;
+import com.example.gestor_incidencias.db.IncidenciaDBHelper;
 import com.example.gestor_incidencias.iniciomenu;
 import com.google.android.material.snackbar.Snackbar;
+
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,6 +29,9 @@ import com.google.android.material.snackbar.Snackbar;
  */
 public class agregar extends Fragment {
     public Spinner prioridad;
+    //Create the instance of dbHelper
+    private IncidenciaDBHelper dbHelper;
+    private SQLiteDatabase db;
 
     public agregar() {
         // Required empty public constructor
@@ -32,14 +40,18 @@ public class agregar extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        //Creation of the dbHelper
+        dbHelper = new IncidenciaDBHelper(getContext());
+        db = dbHelper.getWritableDatabase();
+
         // Inflate the layout for this fragment
         final View agregar = inflater.inflate(R.layout.fragment_agregar, container, false);
         final Button btnafegirIncidencia = agregar.findViewById(R.id.btnafegirIncidencia);
 
         //spinner
         prioridad = agregar.findViewById(R.id.urgencia);
-        String[] Valoracion = new String[]{"Alta", "Mediana", "Baja"};
-        final ArrayAdapter adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, Valoracion);
+        String[] prioridades = new String[]{"Alta", "Mediana", "Baja"};
+        final ArrayAdapter adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, prioridades);
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         prioridad.setPrompt("Tipo de urgencia");
@@ -48,15 +60,22 @@ public class agregar extends Fragment {
 
         btnafegirIncidencia.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                String urgencia = prioridad.getSelectedItem().toString();
+                String prioritat = prioridad.getSelectedItem().toString();
                 EditText txtIncidencia = agregar.findViewById(R.id.txtincidencia);
                 String txtIncidenciaForm = txtIncidencia.getText().toString();
 
-                ((iniciomenu)getActivity()).arrayIncidencies.add(new incidencia(txtIncidenciaForm, urgencia));
+                incidencia incidencia = new incidencia(txtIncidenciaForm, prioritat);
+                //((iniciomenu)getActivity()).arrayIncidencies.add(incidencia);
+                ((iniciomenu)getActivity()).arrayIncidencies.add(incidencia);
+
+                //INSERTANDO DATOS DENTRO DE LA BBDD
+                dbHelper.insertIncidencia(db,incidencia);
 
             }
         });
 
+
         return agregar;
     }
+
 }
