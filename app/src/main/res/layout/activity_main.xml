@@ -17,10 +17,11 @@
         app:srcCompat="@drawable/bg" />
 
     <TextView
-        android:layout_width="129dp"
-        android:layout_height="55dp"
+        android:layout_width="224dp"
+        android:layout_height="71dp"
         android:fontFamily="sans-serif-black"
-        android:text="Entrar"
+        android:gravity="center"
+        android:text="LOGIN"
         android:textColor="#FFFFFF"
         android:textSize="45sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -33,13 +34,14 @@
         android:id="@+id/logbtn"
         android:layout_width="111dp"
         android:layout_height="57dp"
+        android:background="@drawable/btn_redondo"
         android:text="Entrar"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.632" />
+        app:layout_constraintVertical_bias="0.657" />
 
     <EditText
         android:id="@+id/logpass"
@@ -66,6 +68,7 @@
         android:outlineSpotShadowColor="#FFFFFF"
         android:textColor="#FBFBFB"
         android:textColorHint="#DDD7D7"
+        android:textColorLink="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"

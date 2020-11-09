@@ -63,6 +63,7 @@ public class IncidenciaDBHelper extends SQLiteOpenHelper {
         }
     }
 
+    /*
     //Obtener la lista de comentarios en la base de datos
     public ArrayList<incidencia> getIncidencias(){
         SQLiteDatabase db = this.getReadableDatabase();
@@ -84,6 +85,23 @@ public class IncidenciaDBHelper extends SQLiteOpenHelper {
         //Cerramos el cursor
         c.close();
         return lista;
+    }
+    */
+
+    public ArrayList<incidencia> listIncidencia(){
+        String sql = "select * from " + TABLE_NAME;
+        SQLiteDatabase db = this.getReadableDatabase();
+        ArrayList<incidencia> storeContacts = new ArrayList<>();
+        Cursor cursor = db.rawQuery(sql, null);
+        if(cursor.moveToFirst()){
+            do{
+                String nom = cursor.getString(0);
+                String prioritat = cursor.getString(1);
+                storeContacts.add(new incidencia(nom, prioritat));
+            }while (cursor.moveToNext());
+        }
+        cursor.close();
+        return storeContacts;
     }
 
 }

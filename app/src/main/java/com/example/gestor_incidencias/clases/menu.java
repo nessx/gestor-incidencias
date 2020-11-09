@@ -59,7 +59,6 @@ public class menu extends Fragment {
                 menuTransaction.replace(R.id.fragmentID, fragmentAddIncidencia );
 
                 menuTransaction.commit();
-                dbHelper.getIncidencias();
                 dbHelper.close();
                 db.close();
             }
