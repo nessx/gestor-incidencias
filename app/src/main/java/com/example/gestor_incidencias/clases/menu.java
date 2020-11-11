@@ -1,5 +1,6 @@
 package com.example.gestor_incidencias.clases;
 
+import android.content.DialogInterface;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -81,12 +83,40 @@ public class menu extends Fragment {
         final Button btnEliminar = menu.findViewById(R.id.eliminar);
         btnEliminar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                int numIncidencies = ((iniciomenu)getActivity()).arrayIncidencies.size();
-                Toast toast = Toast.makeText(((iniciomenu)getActivity()).getApplicationContext(), String.valueOf(numIncidencies), Toast.LENGTH_SHORT);
-                toast.show();
+                confirm();
             }
         });
 
         return menu;
+    }
+
+    public void confirm() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getContext());
+
+        // set title
+        alertDialogBuilder.setTitle(R.string.dialog_cln_tl);
+
+        // set dialog message
+        alertDialogBuilder
+                .setMessage(R.string.dialog_mensaje)
+                .setCancelable(false)
+                .setPositiveButton(R.string.dialog_aceptar,new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int id) {
+                        int numIncidencies = ((iniciomenu)getActivity()).arrayIncidencies.size();
+                        Toast toast = Toast.makeText(((iniciomenu)getActivity()).getApplicationContext(), String.valueOf(numIncidencies), Toast.LENGTH_SHORT);
+                        toast.show();
+                    }
+                })
+                .setNegativeButton(R.string.dialog_cancelar,new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int id) {
+                        Toast toast = Toast.makeText(((iniciomenu)getActivity()).getApplicationContext(), R.string.dialog_cln_msg, Toast.LENGTH_SHORT);
+                        toast.show();
+                        dialog.cancel();
+                    }
+                });
+        // create alert dialog
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        // show it
+        alertDialog.show();
     }
 }

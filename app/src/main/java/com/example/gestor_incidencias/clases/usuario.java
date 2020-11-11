@@ -2,7 +2,7 @@ package com.example.gestor_incidencias.clases;
 
 public class usuario {
     private String user = "admin";
-    private String passwd = "1234";
+    private String passwd = "admin";
 
     public void setuser(String titulo) {
         this.user = user;
