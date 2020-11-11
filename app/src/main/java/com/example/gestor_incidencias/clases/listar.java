@@ -42,8 +42,6 @@ public class listar extends Fragment {
 
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, ((iniciomenu)getActivity()).arrayIncidencies);
 
-        //RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, dbHelper.getIncidencias());
-
         recyclerView.setAdapter(adapter);
 
 

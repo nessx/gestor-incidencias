@@ -69,9 +69,6 @@ public class agregar extends Fragment {
                 String txtIncidenciaForm = txtIncidencia.getText().toString();
 
                 incidencia incidencia = new incidencia(txtIncidenciaForm, prioritat);
-                //((iniciomenu)getActivity()).arrayIncidencies.add(incidencia);
-                ((iniciomenu)getActivity()).arrayIncidencies.add(incidencia);
-
 
                 //INSERTANDO DATOS DENTRO DE LA BBDD
                 dbHelper.insertIncidencia(db,incidencia);

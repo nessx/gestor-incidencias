@@ -63,44 +63,20 @@ public class IncidenciaDBHelper extends SQLiteOpenHelper {
         }
     }
 
-    //Obtener la lista de comentarios en la base de datos
-    public ArrayList<incidencia> getIncidencias(){
-        SQLiteDatabase db = this.getReadableDatabase();
-        //Creamos el cursor
-        ArrayList<incidencia> lista = new ArrayList<>();
-        Cursor c = db.rawQuery("select title, prioritat from " +TABLE_NAME, null);
-        if (c != null && c.getCount()>0) {
-            c.moveToFirst();
-            do {
-                //Asignamos el valor en nuestras variables para crear un nuevo objeto Comentario
-                String nom = c.getString(c.getColumnIndex("title"));
-                String prioritat = c.getString(c.getColumnIndex("prioritat"));
-                incidencia com = new incidencia(nom,prioritat);
-                //Añadimos el comentario a la lista
-                lista.add(com);
-            } while (c.moveToNext());
-        }
-
-        //Cerramos el cursor
-        c.close();
-        return lista;
-    }
-
-    /*
     public ArrayList<incidencia> listIncidencia(){
         String sql = "select * from " + TABLE_NAME;
         SQLiteDatabase db = this.getReadableDatabase();
-        ArrayList<incidencia> storeContacts = new ArrayList<>();
+        ArrayList<incidencia> inc = new ArrayList<>();
         Cursor cursor = db.rawQuery(sql, null);
         if(cursor.moveToFirst()){
             do{
-                String nom = cursor.getString(0);
-                String prioritat = cursor.getString(1);
-                storeContacts.add(new incidencia(nom, prioritat));
+                String nom = cursor.getString(1);
+                String prioritat = cursor.getString(2);
+                inc.add(new incidencia(nom, prioritat));
             }while (cursor.moveToNext());
         }
         cursor.close();
-        return storeContacts;
-    }*/
+        return inc;
+    }
 
 }
