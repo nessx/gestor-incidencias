@@ -63,7 +63,6 @@ public class IncidenciaDBHelper extends SQLiteOpenHelper {
         }
     }
 
-    /*
     //Obtener la lista de comentarios en la base de datos
     public ArrayList<incidencia> getIncidencias(){
         SQLiteDatabase db = this.getReadableDatabase();
@@ -86,8 +85,8 @@ public class IncidenciaDBHelper extends SQLiteOpenHelper {
         c.close();
         return lista;
     }
-    */
 
+    /*
     public ArrayList<incidencia> listIncidencia(){
         String sql = "select * from " + TABLE_NAME;
         SQLiteDatabase db = this.getReadableDatabase();
@@ -102,6 +101,6 @@ public class IncidenciaDBHelper extends SQLiteOpenHelper {
         }
         cursor.close();
         return storeContacts;
-    }
+    }*/
 
 }

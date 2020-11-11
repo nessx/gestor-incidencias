@@ -1,12 +1,14 @@
 package com.example.gestor_incidencias.clases;
 
 import android.content.DialogInterface;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +23,7 @@ import com.example.gestor_incidencias.db.IncidenciaDBHelper;
 import com.example.gestor_incidencias.iniciomenu;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -32,6 +35,7 @@ public class agregar extends Fragment {
     //Create the instance of dbHelper
     private IncidenciaDBHelper dbHelper;
     private SQLiteDatabase db;
+    ArrayList<incidencia> incidenciarr;
 
     public agregar() {
         // Required empty public constructor
@@ -67,6 +71,7 @@ public class agregar extends Fragment {
                 incidencia incidencia = new incidencia(txtIncidenciaForm, prioritat);
                 //((iniciomenu)getActivity()).arrayIncidencies.add(incidencia);
                 ((iniciomenu)getActivity()).arrayIncidencies.add(incidencia);
+
 
                 //INSERTANDO DATOS DENTRO DE LA BBDD
                 dbHelper.insertIncidencia(db,incidencia);

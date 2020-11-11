@@ -1,6 +1,7 @@
 package com.example.gestor_incidencias;
 
 import android.content.DialogInterface;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -24,8 +25,11 @@ import java.util.List;
 
 
 public class iniciomenu extends AppCompatActivity {
+    private IncidenciaDBHelper dbHelper;
+    private SQLiteDatabase db;
 
     TextView userview;
+
     public ArrayList<incidencia> arrayIncidencies;
 
     protected Fragment[] menuFragments;
@@ -34,6 +38,10 @@ public class iniciomenu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_inicio);
+
+        //Creation of the dbHelper
+        dbHelper = new IncidenciaDBHelper(getApplicationContext());
+        db = dbHelper.getWritableDatabase();
 
         usuario user = new usuario();
         userview = findViewById(R.id.userview);
@@ -45,6 +53,5 @@ public class iniciomenu extends AppCompatActivity {
         bundle.putSerializable("arrayIncidencies", arrayIncidencies);
 
     }
-
 
 }
