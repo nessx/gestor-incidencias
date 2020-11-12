@@ -1,10 +1,15 @@
 package com.example.gestor_incidencias.clases;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,7 +29,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list, parent, false);
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.item_list, parent, false);
         ViewHolder holder = new ViewHolder(view);
         return holder;
     }
@@ -42,7 +48,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView etiquetaNom, etiquetaPrioritat;
-        ConstraintLayout layout;
+        CardView layout;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -51,4 +57,5 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             layout = itemView.findViewById(R.id.layout);
         }
     }
+
 }

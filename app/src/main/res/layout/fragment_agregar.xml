@@ -41,8 +41,8 @@ tools:context=".clases.agregar">
 
     <Spinner
         android:id="@+id/urgencia"
-        android:layout_width="208dp"
-        android:layout_height="47dp"
+        android:layout_width="233dp"
+        android:layout_height="54dp"
         android:outlineAmbientShadowColor="#000000"
         android:outlineSpotShadowColor="#000000"
         android:spinnerMode="dialog"

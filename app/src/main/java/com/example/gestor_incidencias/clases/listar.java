@@ -34,13 +34,17 @@ public class listar extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+        //Creation of the dbHelper
+        dbHelper = new IncidenciaDBHelper(getContext());
+        db = dbHelper.getWritableDatabase();
+
         // Inflate the layout for this fragment
         View listar = inflater.inflate(R.layout.fragment_listar, container, false);
 
         RecyclerView recyclerView = (RecyclerView)listar.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(listar.getContext()));
 
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, ((iniciomenu)getActivity()).arrayIncidencies);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, dbHelper.listIncidencia());
 
         recyclerView.setAdapter(adapter);
 

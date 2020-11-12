@@ -3,6 +3,7 @@ package com.example.gestor_incidencias.db;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
@@ -67,16 +68,31 @@ public class IncidenciaDBHelper extends SQLiteOpenHelper {
         String sql = "select * from " + TABLE_NAME;
         SQLiteDatabase db = this.getReadableDatabase();
         ArrayList<incidencia> inc = new ArrayList<>();
-        Cursor cursor = db.rawQuery(sql, null);
-        if(cursor.moveToFirst()){
+        Cursor c = db.rawQuery(sql, null);
+        if(c.moveToFirst()){
             do{
-                String nom = cursor.getString(1);
-                String prioritat = cursor.getString(2);
+                String nom = c.getString(1);
+                String prioritat = c.getString(2);
                 inc.add(new incidencia(nom, prioritat));
-            }while (cursor.moveToNext());
+            }while (c.moveToNext());
         }
-        cursor.close();
+        c.close();
         return inc;
+    }
+
+    //delete all
+    public void delete(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        db.delete(TABLE_NAME,null,null);
+        //db.execSQL("delete from "+ TABLE_NAME);
+        db.close();
+    }
+
+    //delete an specific item
+    public void delinc(int incid){
+        SQLiteDatabase db = this.getReadableDatabase();
+        db.execSQL("DELETE FROM "+TABLE_NAME+" WHERE id="+incid);
+        db.close();
     }
 
 }

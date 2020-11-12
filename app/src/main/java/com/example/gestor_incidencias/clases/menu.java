@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -87,6 +88,7 @@ public class menu extends Fragment {
             }
         });
 
+
         return menu;
     }
 
@@ -102,8 +104,8 @@ public class menu extends Fragment {
                 .setCancelable(false)
                 .setPositiveButton(R.string.dialog_aceptar,new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog,int id) {
-                        int numIncidencies = ((iniciomenu)getActivity()).arrayIncidencies.size();
-                        Toast toast = Toast.makeText(((iniciomenu)getActivity()).getApplicationContext(), String.valueOf(numIncidencies), Toast.LENGTH_SHORT);
+                        dbHelper.delete();
+                        Toast toast = Toast.makeText(((iniciomenu)getActivity()).getApplicationContext(), R.string.dialog_del_msg, Toast.LENGTH_SHORT);
                         toast.show();
                     }
                 })

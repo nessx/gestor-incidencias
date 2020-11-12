@@ -32,10 +32,11 @@ import java.util.List;
  */
 public class agregar extends Fragment {
     public Spinner prioridad;
+
     //Create the instance of dbHelper
     private IncidenciaDBHelper dbHelper;
     private SQLiteDatabase db;
-    ArrayList<incidencia> incidenciarr;
+    //
 
     public agregar() {
         // Required empty public constructor
@@ -67,17 +68,36 @@ public class agregar extends Fragment {
                 String prioritat = prioridad.getSelectedItem().toString();
                 EditText txtIncidencia = agregar.findViewById(R.id.txtincidencia);
                 String txtIncidenciaForm = txtIncidencia.getText().toString();
-
-                incidencia incidencia = new incidencia(txtIncidenciaForm, prioritat);
-
-                //INSERTANDO DATOS DENTRO DE LA BBDD
-                dbHelper.insertIncidencia(db,incidencia);
+                if (vacionulo(txtIncidenciaForm)){
+                    alert();
+                }else{
+                    incidencia i = new incidencia(txtIncidenciaForm, prioritat);
+                    dbHelper.insertIncidencia(db,i);
+                }
 
             }
         });
 
 
         return agregar;
+    }
+
+    public static boolean vacionulo(String str) {
+        if(str != null && !str.isEmpty())
+            return false;
+        return true;
+    }
+    void alert(){
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getContext());
+        alertDialogBuilder.setTitle(R.string.dialog_cln_tl);
+        alertDialogBuilder
+                .setMessage(R.string.dialog_del_txtvacio)
+                .setCancelable(false)
+                .setNegativeButton(R.string.dialog_aceptar,new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int id) {
+                        dialog.cancel();
+                    }
+                }).create().show();
     }
 
 }
