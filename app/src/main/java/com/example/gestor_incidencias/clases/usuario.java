@@ -1,5 +1,8 @@
 package com.example.gestor_incidencias.clases;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
 public class usuario {
     private String user = "admin";
     private String passwd = "admin";
@@ -19,4 +22,5 @@ public class usuario {
     public String getpasswd() {
         return passwd;
     }
+
 }

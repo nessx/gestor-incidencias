@@ -4,7 +4,6 @@ import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -50,7 +49,6 @@ public class iniciomenu extends AppCompatActivity {
         userview.setText("Bienvenido/a "+user.getuser().toUpperCase());
 
         arrayIncidencies = new ArrayList<>();
-        arrayIncidencies=dbHelper.listIncidencia();
         Bundle bundle = new Bundle();
         bundle.putSerializable("arrayIncidencies", arrayIncidencies);
 
