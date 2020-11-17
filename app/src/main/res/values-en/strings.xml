@@ -20,10 +20,11 @@
     <string name="login_pass">PASSWORD</string>
     <string name="bottom_login">ENTER</string>
     <string name="recordar_datos">Remember data</string>
-    <string name="in_Alta">High</string>
-    <string name="in_Med">Median</string>
-    <string name="in_Baja">Low</string>
+    <string name="in_Alta">Alta</string>
+    <string name="in_Med">Mediana</string>
+    <string name="in_Baja">Baja</string>
     <string name="in_type">Incident type</string>
     <string name="in_title">Title</string>
     <string name="in_add">Add</string>
+    <string name="in_sel">Type of incident ...</string>
 </resources>

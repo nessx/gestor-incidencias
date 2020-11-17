@@ -3,6 +3,7 @@ package com.example.gestor_incidencias.clases;
 import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
@@ -16,6 +17,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.gestor_incidencias.R;
@@ -59,8 +61,37 @@ public class agregar extends Fragment {
 
         //spinner
         prioridad = agregar.findViewById(R.id.urgencia);
-        String[] prioridades = new String[]{getResources().getString(R.string.in_Alta), getResources().getString(R.string.in_Med), getResources().getString(R.string.in_Baja)};
-        final ArrayAdapter adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, prioridades);
+        String[] prioridades = new String[]{getResources().getString(R.string.in_sel),getResources().getString(R.string.in_Alta), getResources().getString(R.string.in_Med), getResources().getString(R.string.in_Baja)};
+        //final ArrayAdapter adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, prioridades);
+        // Initializing an ArrayAdapter
+        final ArrayAdapter adapter = new ArrayAdapter<String>(
+                getActivity(),android.R.layout.simple_spinner_dropdown_item,prioridades){
+            @Override
+            public boolean isEnabled(int position){
+                if(position == 0)
+                {
+                    //hacemos que el primer item no sea seleccionable
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            @Override
+            public View getDropDownView(int position, View convertView,
+                                        ViewGroup parent) {
+                View view = super.getDropDownView(position, convertView, parent);
+                TextView i = (TextView) view;
+                if(position == 0){
+                    i.setTextColor(Color.GRAY);
+                }
+                else {
+                    i.setTextColor(Color.BLACK);
+                }
+                return view;
+            }
+        };
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         prioridad.setPrompt(getResources().getString(R.string.in_type));

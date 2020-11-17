@@ -49,9 +49,6 @@ public class iniciomenu extends AppCompatActivity {
     private SQLiteDatabase db;
 
     TextView userview;
-
-    public ArrayList<incidencia> arrayIncidencies;
-
     protected Fragment[] menuFragments;
 
     @Override
@@ -65,13 +62,7 @@ public class iniciomenu extends AppCompatActivity {
 
         usuario user = new usuario();
         userview = findViewById(R.id.userview);
-
         userview.setText(getResources().getString(R.string.dialog_welcome)+" "+user.getuser().toUpperCase());
-
-        arrayIncidencies = new ArrayList<>();
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("arrayIncidencies", arrayIncidencies);
-
     }
 
 }
