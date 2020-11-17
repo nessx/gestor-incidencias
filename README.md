@@ -20,7 +20,7 @@
 # Legal
 
 ### Licencia
-Leepper.inc - nessx
+nessx
 
 Copyright (C) 2020-2025 
 
