@@ -1,5 +1,10 @@
 # By Nestor Santana
 
+### Gestor de incidencias - Utilidad
+```
+- La principal función de esta aplicacion es crear incidencias y insertarlas dentro de una base de datos SQLite y Listarlas en un Recyclerview.
+```
+
 ### Descarga e instalación
 ```
 - Inicia Android Studio y cierra los proyectos de Android Studio abiertos.
