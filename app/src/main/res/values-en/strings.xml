@@ -1,14 +1,13 @@
 <resources>
-    <string name="app_name">Gestor Incidencias</string>
+    <string name="app_name">Incident Manager</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
     <!-- LENGUAGE EN -->
     <string name="dialog_mensaje">Are you sure you want to eliminate all incidents?</string>
     <string name="dialog_aceptar">Accept</string>
     <string name="dialog_cancelar">Decline</string>
-    <string name="dialog_cln_msg">You have selected cancel.</string>
+    <string name="dialog_cln_msg">You have selected decline.</string>
     <string name="dialog_cln_tl">Information</string>
     <string name="dialog_del_msg">All issues have been removed successfully!</string>
     <string name="dialog_del_txtvacio">YOU CANNOT ADD AN INCIDENT WITHOUT A TITLE!</string>
