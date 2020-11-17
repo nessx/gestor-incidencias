@@ -21,6 +21,7 @@
 ```
 [Desgar archivo](https://github.com/nessx/gestor-incidencias/raw/master/gestor_incidencias.apk)
 ```
+[Desgar archivo](https://github.com/nessx/gestor-incidencias/raw/master/gestor_incidencias.apk)
 # Legal
 
 ### Licencia
