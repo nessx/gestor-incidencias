@@ -50,6 +50,8 @@ public class menu extends Fragment {
         dbHelper = new IncidenciaDBHelper(getContext());
         db = dbHelper.getWritableDatabase();
         //end
+
+
         // Inflate the layout for this fragment
         View menu = inflater.inflate(R.layout.fragment_menu, container, false);
 
@@ -88,6 +90,10 @@ public class menu extends Fragment {
             }
         });
 
+        //set hitns
+        btnAfegir.setText(R.string.menu_add);
+        btnLlistar.setText(R.string.menu_list);
+        btnEliminar.setText(R.string.menu_del);
 
         return menu;
     }

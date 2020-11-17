@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.gestor_incidencias.R;
@@ -41,6 +42,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.etiquetaPrioritat.setText(array_incidencies.get(position).getPrioritat());
     }
 
+    //REMOVE ITEM
+    public void removeItem(int position) {
+        array_incidencies.remove(position);
+        notifyItemRemoved(position);
+    }
+    public void restoreItem(incidencia item, int position) {
+        array_incidencies.add(position, item);
+        notifyItemInserted(position);
+    }
+    //END
+
     @Override
     public int getItemCount() {
         return array_incidencies.size();
@@ -57,5 +69,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             layout = itemView.findViewById(R.id.layout);
         }
     }
+    
 
 }

@@ -43,6 +43,12 @@ public class MainActivity extends AppCompatActivity {
         logpass = findViewById(R.id.logpass);
         logbtn = findViewById(R.id.logbtn);
 
+        //set hint
+        loguser.setHint(R.string.login_user);
+        logpass.setHint(R.string.login_pass);
+        checkBoxRememberMe.setText(R.string.recordar_datos);
+        logbtn.setText(R.string.bottom_login);
+
         //codigo del botton
         logbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
                     gotomenu();
                 }
                 else{
-                    Snackbar.make(v, "Usuario o contraseña incorrecto!", Snackbar.LENGTH_LONG)
+                    Snackbar.make(v, R.string.login_failet, Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
                 }
             }

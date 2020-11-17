@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Gestor Incidencias</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <!-- LENGUAGE EN -->
+    <string name="dialog_mensaje">Are you sure you want to eliminate all incidents?</string>
+    <string name="dialog_aceptar">Accept</string>
+    <string name="dialog_cancelar">Decline</string>
+    <string name="dialog_cln_msg">You have selected cancel.</string>
+    <string name="dialog_cln_tl">Information</string>
+    <string name="dialog_del_msg">All issues have been removed successfully!</string>
+    <string name="dialog_del_txtvacio">YOU CANNOT ADD AN INCIDENT WITHOUT A TITLE!</string>
+    <string name="dialog_welcome">Welcome</string>
+    <string name="menu_add">Add</string>
+    <string name="menu_list">List</string>
+    <string name="menu_del">Delete</string>
+    <string name="login_failet">Incorrect username or password!</string>
+    <string name="login_user">USER</string>
+    <string name="login_pass">PASSWORD</string>
+    <string name="bottom_login">ENTER</string>
+    <string name="recordar_datos">Remember data</string>
+    <string name="in_Alta">High</string>
+    <string name="in_Med">Median</string>
+    <string name="in_Baja">Low</string>
+    <string name="in_type">Incident type</string>
+    <string name="in_title">Title</string>
+    <string name="in_add">Add</string>
+</resources>

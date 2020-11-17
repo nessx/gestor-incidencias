@@ -10,8 +10,24 @@
     <string name="dialog_cancelar">Cancelar</string>
     <string name="dialog_cln_msg">Has seleccionado cancelar.</string>
     <string name="dialog_cln_tl">Información</string>
-    <string name="dialog_del_msg">Se han eliminado todas las incidencias correctamete!</string>
-    <string name="dialog_del_txtvacio">NO PUEDES AGREGAR UNA INCIDENCIA SIN UN TITULO!</string>
+    <string name="dialog_del_msg">Se han eliminado todas las incidencias correctamente!</string>
+    <string name="dialog_del_txtvacio">NO PUEDES AGREGAR UNA INCIDENCIA SIN UN TÍTULO!</string>
+    <string name="dialog_welcome">Bienvenido/a</string>
+    <string name="menu_add">Añadir</string>
+    <string name="menu_list">Listar</string>
+    <string name="menu_del">Eliminar</string>
+    <string name="login_failet">Usuario o contraseña incorrecto!</string>
+    <string name="login_user">USUARIO</string>
+    <string name="login_pass">CONTRASEÑA</string>
+    <string name="bottom_login">ENTRAR</string>
+    <string name="recordar_datos">Recordar datos</string>
+    <string name="in_Alta">Alta</string>
+    <string name="in_Med">Mediana</string>
+    <string name="in_Baja">Baja</string>
+    <string name="in_type">Tipo de incidencia</string>
+    <string name="in_title">Titulo</string>
+    <string name="in_add">Agregar</string>
+
 
     <!-- LENGUAGE EN -->
 </resources>

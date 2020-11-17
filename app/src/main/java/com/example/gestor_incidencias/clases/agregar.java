@@ -53,13 +53,17 @@ public class agregar extends Fragment {
         final View agregar = inflater.inflate(R.layout.fragment_agregar, container, false);
         final Button btnafegirIncidencia = agregar.findViewById(R.id.btnafegirIncidencia);
 
+        //add hints
+        btnafegirIncidencia.setText(R.string.in_add);
+
+
         //spinner
         prioridad = agregar.findViewById(R.id.urgencia);
-        String[] prioridades = new String[]{"Alta", "Mediana", "Baja"};
+        String[] prioridades = new String[]{getResources().getString(R.string.in_Alta), getResources().getString(R.string.in_Med), getResources().getString(R.string.in_Baja)};
         final ArrayAdapter adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, prioridades);
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        prioridad.setPrompt("Tipo de urgencia");
+        prioridad.setPrompt(getResources().getString(R.string.in_type));
         prioridad.setAdapter(adapter);
         //end
 
@@ -67,6 +71,7 @@ public class agregar extends Fragment {
             public void onClick(View v) {
                 String prioritat = prioridad.getSelectedItem().toString();
                 EditText txtIncidencia = agregar.findViewById(R.id.txtincidencia);
+                txtIncidencia.setHint(R.string.in_title);
                 String txtIncidenciaForm = txtIncidencia.getText().toString();
                 if (vacionulo(txtIncidenciaForm)){
                     alert();
@@ -81,6 +86,7 @@ public class agregar extends Fragment {
 
         return agregar;
     }
+
 
     public static boolean vacionulo(String str) {
         if(str != null && !str.isEmpty())
