@@ -41,6 +41,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.etiquetaNom.setText(array_incidencies.get(position).getNom());
         holder.etiquetaPrioritat.setText(array_incidencies.get(position).getPrioritat());
     }
+    
 
     //REMOVE ITEM
     public void removeItem(int position) {

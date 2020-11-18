@@ -10,6 +10,7 @@
     <string name="dialog_cln_msg">Has seleccionado cancelar.</string>
     <string name="dialog_cln_tl">Información</string>
     <string name="dialog_del_msg">Se han eliminado todas las incidencias correctamente!</string>
+    <string name="dialog_add_msg">Incidencia agregada correctamente!</string>
     <string name="dialog_del_txtvacio">NO PUEDES AGREGAR UNA INCIDENCIA SIN UN TÍTULO!</string>
     <string name="dialog_welcome">Bienvenido/a</string>
     <string name="menu_add">Añadir</string>

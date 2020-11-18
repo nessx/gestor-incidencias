@@ -10,6 +10,7 @@
     <string name="dialog_cln_msg">You have selected decline.</string>
     <string name="dialog_cln_tl">Information</string>
     <string name="dialog_del_msg">All issues have been removed successfully!</string>
+    <string name="dialog_add_msg">Incident added successfully!</string>
     <string name="dialog_del_txtvacio">YOU CANNOT ADD AN INCIDENT WITHOUT A TITLE!</string>
     <string name="dialog_welcome">Welcome</string>
     <string name="menu_add">Add</string>

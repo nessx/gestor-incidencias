@@ -64,6 +64,9 @@ public class menu extends Fragment {
                 menuTransaction.replace(R.id.fragmentID, fragmentAddIncidencia );
 
                 menuTransaction.commit();
+                Toast toast = Toast.makeText(((iniciomenu)getActivity()).getApplicationContext(), R.string.dialog_add_msg, Toast.LENGTH_SHORT);
+                toast.show();
+
                 dbHelper.close();
                 db.close();
             }
