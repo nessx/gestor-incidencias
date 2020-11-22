@@ -28,4 +28,15 @@
     <string name="in_title">Title</string>
     <string name="in_add">Add</string>
     <string name="in_sel">Type of incident ...</string>
+    <string name="menu_ajustes">Settins</string>
+
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="title_click">Title click</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+    <string name="menu_group">Group</string>
+    <string name="copyright">© nessx</string>
 </resources>
