@@ -24,6 +24,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.gestor_incidencias.clases.RecyclerViewAdapter;
 import com.example.gestor_incidencias.clases.agregar;
 import com.example.gestor_incidencias.clases.listar;
+import com.example.gestor_incidencias.clases.settings;
 import com.example.gestor_incidencias.clases.usuario;
 import com.example.gestor_incidencias.db.IncidenciaDBHelper;
 import com.google.android.material.navigation.NavigationView;
@@ -102,6 +103,9 @@ public class iniciomenu extends AppCompatActivity
                 break;
             case R.id.eliminar:
                 confirm();
+                break;
+            case R.id.ajustes:
+                fragment = new settings();
                 break;
             case R.id.nav_share:
                 title = R.string.menu_share;
