@@ -6,7 +6,7 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/afegir"
-            android:icon="@drawable/ic_menu_add"
+            android:icon="@drawable/ic_m_add"
             android:title="@string/menu_add" />
         <item
             android:id="@+id/llistar"
@@ -14,7 +14,7 @@
             android:title="@string/menu_list" />
         <item
             android:id="@+id/eliminar"
-            android:icon="@drawable/ic_menu_delete"
+            android:icon="@drawable/ic_m_delete"
             android:title="@string/menu_del" />
     </group>
 
