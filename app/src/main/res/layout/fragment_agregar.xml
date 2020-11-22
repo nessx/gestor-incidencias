@@ -9,8 +9,8 @@ tools:context=".clases.agregar">
 
     <Button
         android:id="@+id/btnafegirIncidencia"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="113dp"
+        android:layout_height="52dp"
         android:layout_marginStart="156dp"
         android:layout_marginEnd="156dp"
         android:background="@drawable/btn_redondo"
@@ -18,15 +18,15 @@ tools:context=".clases.agregar">
         android:textColor="#F8F8F8"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.56" />
+        app:layout_constraintVertical_bias="0.585" />
 
     <EditText
         android:id="@+id/txtincidencia"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="298dp"
+        android:layout_height="53dp"
         android:layout_marginStart="156dp"
         android:layout_marginEnd="156dp"
         android:ems="10"
@@ -34,22 +34,22 @@ tools:context=".clases.agregar">
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.57"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.348" />
+        app:layout_constraintVertical_bias="0.346" />
 
     <Spinner
         android:id="@+id/urgencia"
-        android:layout_width="233dp"
-        android:layout_height="54dp"
+        android:layout_width="303dp"
+        android:layout_height="47dp"
         android:outlineAmbientShadowColor="#000000"
         android:outlineSpotShadowColor="#000000"
         android:spinnerMode="dialog"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.458"
+        app:layout_constraintHorizontal_bias="0.518"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.44" />
+        app:layout_constraintVertical_bias="0.459" />
 </androidx.constraintlayout.widget.ConstraintLayout>

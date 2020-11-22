@@ -29,6 +29,8 @@
     <string name="in_add">Agregar</string>
     <string name="in_sel">Tipo de incidencia...</string>
     <string name="menu_ajustes">Ajustes</string>
+    <string name="type">Tipo</string>
+    <string name="title">Titulo</string>
 
 
     <!-- LENGUAGE EN -->

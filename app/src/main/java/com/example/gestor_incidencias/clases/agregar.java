@@ -62,7 +62,6 @@ public class agregar extends Fragment {
         //spinner
         prioridad = agregar.findViewById(R.id.urgencia);
         String[] prioridades = new String[]{getResources().getString(R.string.in_sel),getResources().getString(R.string.in_Alta), getResources().getString(R.string.in_Med), getResources().getString(R.string.in_Baja)};
-        //final ArrayAdapter adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, prioridades);
         // Initializing an ArrayAdapter
         final ArrayAdapter adapter = new ArrayAdapter<String>(
                 getActivity(),android.R.layout.simple_spinner_dropdown_item,prioridades){
@@ -109,6 +108,7 @@ public class agregar extends Fragment {
                 }else{
                     incidencia i = new incidencia(txtIncidenciaForm, prioritat);
                     dbHelper.insertIncidencia(db,i);
+                    Toast.makeText(getContext(),R.string.dialog_add_msg,Toast.LENGTH_SHORT).show();
                 }
 
             }

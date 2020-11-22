@@ -4,9 +4,11 @@ import android.content.DialogInterface;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.view.ContextThemeWrapper;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -22,6 +24,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.gestor_incidencias.clases.RecyclerViewAdapter;
 import com.example.gestor_incidencias.clases.agregar;
 import com.example.gestor_incidencias.clases.listar;
+import com.example.gestor_incidencias.clases.usuario;
 import com.example.gestor_incidencias.db.IncidenciaDBHelper;
 import com.google.android.material.navigation.NavigationView;
 
@@ -54,9 +57,9 @@ public class iniciomenu extends AppCompatActivity
         dbHelper = new IncidenciaDBHelper(getApplicationContext());
         db = dbHelper.getWritableDatabase();
 
-        //usuario user = new usuario();
-        //TextView userview = findViewById(R.id.userview);
-        //userview.setText(getResources().getString(R.string.dialog_welcome)+" "+user.getuser().toUpperCase());
+        /*usuario user = new usuario();
+        TextView userview = (TextView)findViewById(R.id.header_title);
+        userview.setText(getResources().getString(R.string.dialog_welcome)+" "+user.getuser());*/
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
@@ -98,7 +101,7 @@ public class iniciomenu extends AppCompatActivity
                 fragment = new listar();
                 break;
             case R.id.eliminar:
-                dbHelper.delete();
+                confirm();
                 break;
             case R.id.nav_share:
                 title = R.string.menu_share;
@@ -142,8 +145,8 @@ public class iniciomenu extends AppCompatActivity
     }
 
     public void confirm() {
-        //AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getApplicationContext());
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getApplicationContext(), R.style.Theme_AppCompat_Light);
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.myDialog));
+
 
 
         // set title
