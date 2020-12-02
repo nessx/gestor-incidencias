@@ -37,8 +37,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         s_preferences = new spref_manager(getApplicationContext());
 
-        Toast.makeText(getApplicationContext(),"El idioma guardado es: "+s_preferences.getLang(),Toast.LENGTH_SHORT).show();
-        setAppLocale(s_preferences.getLang());
+        //test language preferences
+        if(!new spref_manager(this).noLang()){
+            setAppLocale(s_preferences.getLang());
+        }
+
+        //Toast.makeText(getApplicationContext(),"El idioma guardado es: "+s_preferences.getLang(),Toast.LENGTH_SHORT).show();
+        //setAppLocale(s_preferences.getLang());
 
 
         //Checkbox
