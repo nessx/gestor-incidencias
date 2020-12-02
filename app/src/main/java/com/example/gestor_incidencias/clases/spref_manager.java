@@ -1,5 +1,6 @@
 package com.example.gestor_incidencias.clases;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 
@@ -22,6 +23,23 @@ public class spref_manager {
         editor.commit();
     }
 
+    public void savelangDetails(String lang) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("LangDetails", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("Lang", lang);
+        editor.commit();
+    }
+    public String getLang() {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("LangDetails", Context.MODE_PRIVATE);
+        return sharedPreferences.getString("Lang", "");
+    }
+
+    public boolean noLang() {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("LangDetails", Context.MODE_PRIVATE);
+        boolean langnull = sharedPreferences.getString("Lang", "").isEmpty();
+        return langnull;
+    }
+
     public String getUser() {
         SharedPreferences sharedPreferences = context.getSharedPreferences("LoginDetails", Context.MODE_PRIVATE);
         return sharedPreferences.getString("User", "");
@@ -37,4 +55,12 @@ public class spref_manager {
         boolean isPasswordEmpty = sharedPreferences.getString("Password", "").isEmpty();
         return isUserEmpty || isPasswordEmpty;
     }
+
+    public void reset() {
+        SharedPreferences login = context.getSharedPreferences("LoginDetails", Context.MODE_PRIVATE);
+        SharedPreferences lang = context.getSharedPreferences("LangDetails", Context.MODE_PRIVATE);
+        login.edit().clear().commit();
+        lang.edit().clear().commit();
+    }
+
 }

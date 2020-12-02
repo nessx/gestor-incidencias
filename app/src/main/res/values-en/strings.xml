@@ -29,8 +29,7 @@
     <string name="in_add">Add</string>
     <string name="in_sel">Type of incident ...</string>
     <string name="menu_ajustes">Settins</string>
-    <string name="type">Type</string>
-    <string name="title">Title</string>
+    <string name="title">Incidents</string>
 
 
     <string name="navigation_drawer_open">Open navigation drawer</string>

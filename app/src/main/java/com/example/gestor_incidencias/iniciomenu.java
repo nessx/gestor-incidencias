@@ -1,6 +1,7 @@
 package com.example.gestor_incidencias;
 
 import android.content.DialogInterface;
+import android.content.res.Configuration;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Paint;
 import android.os.Bundle;
@@ -28,6 +29,9 @@ import com.example.gestor_incidencias.clases.settings;
 import com.example.gestor_incidencias.clases.usuario;
 import com.example.gestor_incidencias.db.IncidenciaDBHelper;
 import com.google.android.material.navigation.NavigationView;
+import com.example.gestor_incidencias.clases.spref_manager;
+
+import java.util.Locale;
 
 
 public class iniciomenu extends AppCompatActivity
@@ -46,6 +50,7 @@ public class iniciomenu extends AppCompatActivity
     private SQLiteDatabase db;
     private DrawerLayout drawerLayout;
     private Fragment fragment;
+
 
     protected Fragment[] menuFragments;
 
@@ -151,8 +156,6 @@ public class iniciomenu extends AppCompatActivity
     public void confirm() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.myDialog));
 
-
-
         // set title
         alertDialogBuilder.setTitle(R.string.dialog_cln_tl);
 
@@ -179,5 +182,7 @@ public class iniciomenu extends AppCompatActivity
         // show it
         alertDialog.show();
     }
+
+
 
 }

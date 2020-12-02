@@ -5,16 +5,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.gestor_incidencias.clases.spref_manager;
 import com.example.gestor_incidencias.clases.usuario;
 import com.example.gestor_incidencias.db.IncidenciaDBHelper;
 import com.google.android.material.snackbar.Snackbar;
+import com.example.gestor_incidencias.clases.settings;
+
+import java.util.Locale;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -29,6 +36,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         s_preferences = new spref_manager(getApplicationContext());
+
+        Toast.makeText(getApplicationContext(),"El idioma guardado es: "+s_preferences.getLang(),Toast.LENGTH_SHORT).show();
+        setAppLocale(s_preferences.getLang());
+
 
         //Checkbox
         checkBoxRememberMe = (CheckBox) findViewById(R.id.checkBox);
@@ -77,5 +88,16 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent (MainActivity.this, iniciomenu.class);
         startActivity(intent);
     }
+
+    private void setAppLocale(String localeCode){
+        Resources resources = getResources();
+        DisplayMetrics displayMetrics = resources.getDisplayMetrics();
+        Configuration configuration = resources.getConfiguration();
+        configuration.setLocale(new Locale(localeCode.toLowerCase()));
+        resources.updateConfiguration(configuration, displayMetrics);
+        configuration.locale = new Locale(localeCode.toLowerCase());
+        resources.updateConfiguration(configuration, displayMetrics);
+    }
+
 
 }

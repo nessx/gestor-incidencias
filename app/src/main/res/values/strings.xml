@@ -29,8 +29,7 @@
     <string name="in_add">Agregar</string>
     <string name="in_sel">Tipo de incidencia...</string>
     <string name="menu_ajustes">Ajustes</string>
-    <string name="type">Tipo</string>
-    <string name="title">Titulo</string>
+    <string name="title">Incidencias</string>
 
 
     <!-- LENGUAGE EN -->
@@ -44,5 +43,4 @@
     <string name="menu_group">Group</string>
     <string name="copyright">© nessx</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

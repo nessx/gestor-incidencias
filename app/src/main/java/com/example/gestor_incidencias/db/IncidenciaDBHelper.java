@@ -59,6 +59,7 @@ public class IncidenciaDBHelper extends SQLiteOpenHelper {
             values.put(COLUMN_NAME_PRIORITY, i.getPrioritat());
 
             db.insert(TABLE_NAME, null, values);
+            db.close();
         }else{
             Log.d("sql","Database is closed");
         }
