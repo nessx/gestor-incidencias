@@ -5,6 +5,7 @@
 
     <!-- LENGUAGE ES -->
     <string name="dialog_mensaje">Estás seguro que quieres eliminar todas las incidencias?</string>
+    <string name="dialog_reset">Estás seguro que quieres volver a los valores de fabrica?</string>
     <string name="dialog_aceptar">Aceptar</string>
     <string name="dialog_cancelar">Cancelar</string>
     <string name="dialog_cln_msg">Has seleccionado cancelar.</string>

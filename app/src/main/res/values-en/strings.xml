@@ -5,6 +5,7 @@
 
     <!-- LENGUAGE EN -->
     <string name="dialog_mensaje">Are you sure you want to eliminate all incidents?</string>
+    <string name="dialog_reset">Are you sure you want to return to factory values?</string>
     <string name="dialog_aceptar">Accept</string>
     <string name="dialog_cancelar">Decline</string>
     <string name="dialog_cln_msg">You have selected decline.</string>

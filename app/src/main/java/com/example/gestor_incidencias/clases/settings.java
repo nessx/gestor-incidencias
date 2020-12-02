@@ -130,14 +130,13 @@ public class settings extends Fragment {
 
         reset.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                s_preferences.reset();
-                System.exit(2);
+                resetapp();
             }
         });
 
         resetinc.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                confirm();
+                delall();
             }
         });
 
@@ -173,7 +172,7 @@ public class settings extends Fragment {
         startActivity(intent);
     }
     
-    public void confirm() {
+    public void delall() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getContext());
 
         // set title
@@ -188,6 +187,35 @@ public class settings extends Fragment {
                         dbHelper.delete();
                         Toast.makeText(getContext(), getString(R.string.dialog_del_msg),
                                 Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .setNegativeButton(R.string.dialog_cancelar,new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int id) {
+                        Toast.makeText(getContext(), getString(R.string.dialog_cln_msg),
+                                Toast.LENGTH_SHORT).show();
+                        dialog.cancel();
+                    }
+                });
+        // create alert dialog
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        // show it
+        alertDialog.show();
+    }
+    public void resetapp() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getContext());
+
+        // set title
+        alertDialogBuilder.setTitle(R.string.dialog_cln_tl);
+
+        // set dialog message
+        alertDialogBuilder
+                .setMessage(R.string.dialog_reset)
+                .setCancelable(false)
+                .setPositiveButton(R.string.dialog_aceptar,new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int id) {
+                        dbHelper.delete();
+                        s_preferences.reset();
+                        System.exit(2);
                     }
                 })
                 .setNegativeButton(R.string.dialog_cancelar,new DialogInterface.OnClickListener() {
