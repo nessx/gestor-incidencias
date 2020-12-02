@@ -3,16 +3,21 @@ package com.example.gestor_incidencias.clases;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.activity.OnBackPressedCallback;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.util.DisplayMetrics;
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +30,7 @@ import android.widget.Toast;
 import com.example.gestor_incidencias.clases.spref_manager;
 
 import com.example.gestor_incidencias.R;
+import com.example.gestor_incidencias.db.IncidenciaDBHelper;
 
 import java.util.Locale;
 
@@ -38,6 +44,9 @@ public class settings extends Fragment {
     private spref_manager s_preferences;
     private static Locale myLocale;
 
+    private IncidenciaDBHelper dbHelper;
+    private SQLiteDatabase db;
+
 
     public settings() {
         // Required empty public constructor
@@ -50,13 +59,24 @@ public class settings extends Fragment {
         final View settings = inflater.inflate(R.layout.fragment_settings, container, false);
         final Button btnsave = settings.findViewById(R.id.btnsave);
         final Button reset = settings.findViewById(R.id.reset);
+        final Button resetinc = settings.findViewById(R.id.resetinc);
+        TextView title = settings.findViewById(R.id.set_title);
+
+        title.setText(R.string.menu_ajustes);
+        reset.setText(R.string.reset);
+        btnsave.setText(R.string.save);
+        resetinc.setText(R.string.resetinc);
 
         //shared prefrerences
         s_preferences = new spref_manager(getContext());
 
+        //Creation of the dbHelper
+        dbHelper = new IncidenciaDBHelper(getContext());
+        db = dbHelper.getWritableDatabase();
+
         //spinner
         languaje = settings.findViewById(R.id.lang);
-        String[] l = new String[]{"Seleciona un idioma.","es", "en"};
+        final String[] l = new String[]{getResources().getString(R.string.sel_lang),"Español", "Inglés"};
         // Initializing an ArrayAdapter
         final ArrayAdapter adapter = new ArrayAdapter<String>(
                 getActivity(),android.R.layout.simple_spinner_dropdown_item,l){
@@ -94,10 +114,16 @@ public class settings extends Fragment {
 
         btnsave.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Toast.makeText(getContext(),"El lenguaje elegido fue: "+languaje.getSelectedItem().toString(),Toast.LENGTH_SHORT).show();
+                if (languaje.getSelectedItem().toString() == l[1]){
+                    changeLocale("es");
+
+                } else if (languaje.getSelectedItem().toString() == l[2]){
+                    changeLocale("en");
+                }
+                //Toast.makeText(getContext(),"El lenguaje elegido fue: "+languaje.getSelectedItem().toString(),Toast.LENGTH_SHORT).show();
                 //setLocale(languaje.getSelectedItem().toString());
-                changeLocale(languaje.getSelectedItem().toString());
-                System.exit(2);
+                //changeLocale(languaje.getSelectedItem().toString());
+                onrefresh();
 
             }
         });
@@ -106,6 +132,12 @@ public class settings extends Fragment {
             public void onClick(View v) {
                 s_preferences.reset();
                 System.exit(2);
+            }
+        });
+
+        resetinc.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                confirm();
             }
         });
 
@@ -130,4 +162,44 @@ public class settings extends Fragment {
         new spref_manager(getContext()).savelangDetails(lang);
     }
 
+    public void onrefresh(){
+        Intent intent = getActivity().getIntent();
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK
+                | Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        getActivity().overridePendingTransition(0, 0);
+        getActivity().finish();
+
+        getActivity().overridePendingTransition(0, 0);
+        startActivity(intent);
+    }
+    
+    public void confirm() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getContext());
+
+        // set title
+        alertDialogBuilder.setTitle(R.string.dialog_cln_tl);
+
+        // set dialog message
+        alertDialogBuilder
+                .setMessage(R.string.dialog_mensaje)
+                .setCancelable(false)
+                .setPositiveButton(R.string.dialog_aceptar,new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int id) {
+                        dbHelper.delete();
+                        Toast.makeText(getContext(), getString(R.string.dialog_del_msg),
+                                Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .setNegativeButton(R.string.dialog_cancelar,new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int id) {
+                        Toast.makeText(getContext(), getString(R.string.dialog_cln_msg),
+                                Toast.LENGTH_SHORT).show();
+                        dialog.cancel();
+                    }
+                });
+        // create alert dialog
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        // show it
+        alertDialog.show();
+    }
 }

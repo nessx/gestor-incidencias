@@ -28,8 +28,13 @@
     <string name="in_title">Titulo</string>
     <string name="in_add">Agregar</string>
     <string name="in_sel">Tipo de incidencia...</string>
-    <string name="menu_ajustes">Ajustes</string>
+    <string name="menu_ajustes">Configuración</string>
     <string name="title">Incidencias</string>
+
+    <string name="sel_lang">Seleciona un idioma</string>
+    <string name="save">Guardar</string>
+    <string name="reset">Formatear</string>
+    <string name="resetinc">Borrar incidencias</string>
 
 
     <!-- LENGUAGE EN -->

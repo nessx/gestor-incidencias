@@ -42,10 +42,6 @@ public class MainActivity extends AppCompatActivity {
             setAppLocale(s_preferences.getLang());
         }
 
-        //Toast.makeText(getApplicationContext(),"El idioma guardado es: "+s_preferences.getLang(),Toast.LENGTH_SHORT).show();
-        //setAppLocale(s_preferences.getLang());
-
-
         //Checkbox
         checkBoxRememberMe = (CheckBox) findViewById(R.id.checkBox);
         //si el usuario no esta loggeado
