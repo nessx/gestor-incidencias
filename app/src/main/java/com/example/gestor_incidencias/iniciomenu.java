@@ -112,12 +112,6 @@ public class iniciomenu extends AppCompatActivity
             case R.id.ajustes:
                 fragment = new settings();
                 break;
-            case R.id.nav_share:
-                title = R.string.menu_share;
-                break;
-            case R.id.nav_send:
-                title = R.string.menu_send;
-                break;
             default:
                 throw new IllegalArgumentException("menu option not implemented!!");
         }
