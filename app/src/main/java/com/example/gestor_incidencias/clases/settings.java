@@ -76,10 +76,10 @@ public class settings extends Fragment {
 
         //spinner
         languaje = settings.findViewById(R.id.lang);
-        final String[] l = new String[]{getResources().getString(R.string.sel_lang),"Español", "Inglés"};
+        final String[] lan = new String[]{getResources().getString(R.string.sel_lang),"Español", "Inglés"};
         // Initializing an ArrayAdapter
         final ArrayAdapter adapter = new ArrayAdapter<String>(
-                getActivity(),android.R.layout.simple_spinner_dropdown_item,l){
+                getActivity(),android.R.layout.simple_spinner_dropdown_item,lan){
             @Override
             public boolean isEnabled(int position){
                 if(position == 0)
@@ -114,15 +114,12 @@ public class settings extends Fragment {
 
         btnsave.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if (languaje.getSelectedItem().toString() == l[1]){
+                if (languaje.getSelectedItem().toString() == lan[1]){
                     changeLocale("es");
 
-                } else if (languaje.getSelectedItem().toString() == l[2]){
+                } else if (languaje.getSelectedItem().toString() == lan[2]){
                     changeLocale("en");
                 }
-                //Toast.makeText(getContext(),"El lenguaje elegido fue: "+languaje.getSelectedItem().toString(),Toast.LENGTH_SHORT).show();
-                //setLocale(languaje.getSelectedItem().toString());
-                //changeLocale(languaje.getSelectedItem().toString());
                 onrefresh();
 
             }
