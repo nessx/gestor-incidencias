@@ -15,12 +15,14 @@ import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.util.DisplayMetrics;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -57,14 +59,12 @@ public class settings extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final View settings = inflater.inflate(R.layout.fragment_settings, container, false);
-        final Button btnsave = settings.findViewById(R.id.btnsave);
         final Button reset = settings.findViewById(R.id.reset);
         final Button resetinc = settings.findViewById(R.id.resetinc);
         TextView title = settings.findViewById(R.id.set_title);
 
         title.setText(R.string.menu_ajustes);
         reset.setText(R.string.reset);
-        btnsave.setText(R.string.save);
         resetinc.setText(R.string.resetinc);
 
         //shared prefrerences
@@ -76,10 +76,10 @@ public class settings extends Fragment {
 
         //spinner
         languaje = settings.findViewById(R.id.lang);
-        final String[] lan = new String[]{getResources().getString(R.string.sel_lang),"Español", "Inglés"};
+        final String[] l = new String[]{getResources().getString(R.string.sel_lang),"Español", "Inglés"};
         // Initializing an ArrayAdapter
         final ArrayAdapter adapter = new ArrayAdapter<String>(
-                getActivity(),android.R.layout.simple_spinner_dropdown_item,lan){
+                getActivity(),android.R.layout.simple_spinner_dropdown_item,l){
             @Override
             public boolean isEnabled(int position){
                 if(position == 0)
@@ -112,15 +112,22 @@ public class settings extends Fragment {
         languaje.setAdapter(adapter);
         //end
 
-        btnsave.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                if (languaje.getSelectedItem().toString() == lan[1]){
+        languaje.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (languaje.getSelectedItem().toString() == l[1]){
                     changeLocale("es");
+                    refresh();
 
-                } else if (languaje.getSelectedItem().toString() == lan[2]){
+                } else if (languaje.getSelectedItem().toString() == l[2]){
                     changeLocale("en");
+                    refresh();
                 }
-                onrefresh();
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
 
             }
         });
@@ -156,6 +163,16 @@ public class settings extends Fragment {
 
     private void savelangDetails(String lang) {
         new spref_manager(getContext()).savelangDetails(lang);
+    }
+
+    public void refresh (){
+        Intent i = (getActivity().getIntent());
+        startActivity(i);
+        Fragment s = new settings();
+        FragmentManager menuManager = getFragmentManager();
+        FragmentTransaction menuTransaction = menuManager.beginTransaction();
+        menuTransaction.replace(R.id.home_content,s);
+        menuTransaction.commit();
     }
 
     public void onrefresh(){
