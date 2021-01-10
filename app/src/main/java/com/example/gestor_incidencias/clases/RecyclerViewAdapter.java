@@ -40,6 +40,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.etiquetaNom.setText(array_incidencies.get(position).getNom());
         holder.etiquetaPrioritat.setText(array_incidencies.get(position).getPrioritat());
+        holder.etiquetaDescripcio.setText(array_incidencies.get(position).getDescripcio());
+        holder.etiquetaData.setText(array_incidencies.get(position).getFecha());
     }
     
 
@@ -60,13 +62,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView etiquetaNom, etiquetaPrioritat;
+        TextView etiquetaNom, etiquetaPrioritat, etiquetaDescripcio, etiquetaData;
         CardView layout;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             etiquetaNom = itemView.findViewById(R.id.itemListIncidencia);
             etiquetaPrioritat = itemView.findViewById(R.id.itemListPrioritat);
+            etiquetaDescripcio = itemView.findViewById(R.id.itemListDescripcio);
+            etiquetaData = itemView.findViewById(R.id.itemListdata);
             layout = itemView.findViewById(R.id.layout);
         }
     }

@@ -8,10 +8,14 @@ import android.widget.Spinner;
 public class incidencia {
     protected String nom;
     protected String prioritat;
+    protected String descripcio;
+    protected String fecha;
 
-    public incidencia(String nom, String prioritat){
+    public incidencia(String nom, String prioritat, String descripcio, String fecha){
         this.nom = nom;
         this.prioritat = prioritat;
+        this.descripcio = descripcio;
+        this.fecha = fecha;
     }
 
     public String getNom(){
@@ -20,6 +24,14 @@ public class incidencia {
 
     public String getPrioritat(){
         return prioritat;
+    }
+
+    public String getDescripcio(){
+        return descripcio;
+    }
+
+    public String getFecha(){
+        return fecha;
     }
 
     public void setNom(String newNom){

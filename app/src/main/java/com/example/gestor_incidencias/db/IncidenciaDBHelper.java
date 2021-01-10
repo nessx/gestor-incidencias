@@ -24,13 +24,15 @@ import com.example.gestor_incidencias.db.IncidenciaContract.*;
 import static com.example.gestor_incidencias.db.IncidenciaContract.IncidenciaEntry.COLUMN_NAME_TITLE;
 import static com.example.gestor_incidencias.db.IncidenciaContract.IncidenciaEntry.COLUMN_NAME_PRIORITY;
 import static com.example.gestor_incidencias.db.IncidenciaContract.IncidenciaEntry.TABLE_NAME;
+import static com.example.gestor_incidencias.db.IncidenciaContract.IncidenciaEntry.COLUMN_NAME_DESCRIPCIO;
+import static com.example.gestor_incidencias.db.IncidenciaContract.IncidenciaEntry.COLUMN_NAME_DATE;
 
 public class IncidenciaDBHelper extends SQLiteOpenHelper {
 
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "incidencies.db";
 
-    private static final String SQL_CREATE_ENTRIES = "CREATE TABLE " + TABLE_NAME + "(" + IncidenciaEntry.ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_NAME_TITLE + " TEXT," + COLUMN_NAME_PRIORITY + " TEXT)";
+    private static final String SQL_CREATE_ENTRIES = "CREATE TABLE " + TABLE_NAME + "(" + IncidenciaEntry.ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_NAME_TITLE + " TEXT," + COLUMN_NAME_PRIORITY + " TEXT,"+ COLUMN_NAME_DESCRIPCIO +" TEXT, "+COLUMN_NAME_DATE + " TEXT)";
 
 
     public IncidenciaDBHelper(Context context) {
@@ -57,6 +59,9 @@ public class IncidenciaDBHelper extends SQLiteOpenHelper {
             //Insert the incidence getting all values
             values.put(COLUMN_NAME_TITLE, i.getNom());
             values.put(COLUMN_NAME_PRIORITY, i.getPrioritat());
+            values.put(COLUMN_NAME_DESCRIPCIO, i.getDescripcio());
+            values.put(COLUMN_NAME_DATE, i.getFecha());
+            Log.d("sql","Datos importados!");
 
             db.insert(TABLE_NAME, null, values);
             db.close();
@@ -74,7 +79,9 @@ public class IncidenciaDBHelper extends SQLiteOpenHelper {
             do{
                 String nom = c.getString(1);
                 String prioritat = c.getString(2);
-                inc.add(new incidencia(nom, prioritat));
+                String descripcio = c.getString(3);
+                String data = c.getString(4);
+                inc.add(new incidencia(nom, prioritat, descripcio, data));
             }while (c.moveToNext());
         }
         c.close();

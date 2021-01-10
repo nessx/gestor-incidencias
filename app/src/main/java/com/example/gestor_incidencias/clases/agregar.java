@@ -20,12 +20,15 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+
 import com.example.gestor_incidencias.R;
 import com.example.gestor_incidencias.db.IncidenciaDBHelper;
 import com.example.gestor_incidencias.iniciomenu;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -54,6 +57,11 @@ public class agregar extends Fragment {
         // Inflate the layout for this fragment
         final View agregar = inflater.inflate(R.layout.fragment_agregar, container, false);
         final Button btnafegirIncidencia = agregar.findViewById(R.id.btnafegirIncidencia);
+
+        //date import
+        final SimpleDateFormat dat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+
+
 
         //add hints
         btnafegirIncidencia.setText(R.string.in_add);
@@ -102,11 +110,16 @@ public class agregar extends Fragment {
                 String prioritat = prioridad.getSelectedItem().toString();
                 EditText txtIncidencia = agregar.findViewById(R.id.txtincidencia);
                 txtIncidencia.setHint(R.string.in_title);
+                EditText txtDescripcio = agregar.findViewById(R.id.txtdescripcio);
+
+                // to string
                 String txtIncidenciaForm = txtIncidencia.getText().toString();
+                String txtDescripcioForm = txtDescripcio.getText().toString();
                 if (vacionulo(txtIncidenciaForm)){
                     alert();
                 }else{
-                    incidencia i = new incidencia(txtIncidenciaForm, prioritat);
+                    String currentdata = dat.format(new Date());
+                    incidencia i = new incidencia(txtIncidenciaForm, prioritat, txtDescripcioForm, currentdata);
                     dbHelper.insertIncidencia(db,i);
                     Toast.makeText(getContext(),R.string.dialog_add_msg,Toast.LENGTH_SHORT).show();
                 }
