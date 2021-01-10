@@ -106,9 +106,6 @@ public class iniciomenu extends AppCompatActivity
             case R.id.llistar:
                 fragment = new listar();
                 break;
-            case R.id.eliminar:
-                confirm();
-                break;
             case R.id.ajustes:
                 fragment = new settings();
                 break;
@@ -147,35 +144,6 @@ public class iniciomenu extends AppCompatActivity
         //cambio de estado, puede ser STATE_IDLE, STATE_DRAGGING or STATE_SETTLING
     }
 
-    public void confirm() {
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.myDialog));
-
-        // set title
-        alertDialogBuilder.setTitle(R.string.dialog_cln_tl);
-
-        // set dialog message
-        alertDialogBuilder
-                .setMessage(R.string.dialog_mensaje)
-                .setCancelable(false)
-                .setPositiveButton(R.string.dialog_aceptar,new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog,int id) {
-                        dbHelper.delete();
-                        Toast.makeText(getApplicationContext(), getString(R.string.dialog_del_msg),
-                                Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .setNegativeButton(R.string.dialog_cancelar,new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog,int id) {
-                        Toast.makeText(getApplicationContext(), getString(R.string.dialog_cln_msg),
-                                Toast.LENGTH_SHORT).show();
-                        dialog.cancel();
-                    }
-                });
-        // create alert dialog
-        AlertDialog alertDialog = alertDialogBuilder.create();
-        // show it
-        alertDialog.show();
-    }
 
 
 

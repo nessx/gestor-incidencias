@@ -12,10 +12,10 @@
             android:id="@+id/llistar"
             android:icon="@drawable/ic_menu_list"
             android:title="@string/menu_list" />
-        <item
+       <!-- <item
             android:id="@+id/eliminar"
             android:icon="@drawable/ic_m_delete"
-            android:title="@string/menu_del" />
+            android:title="@string/menu_del" />-->
     </group>
 
     <group

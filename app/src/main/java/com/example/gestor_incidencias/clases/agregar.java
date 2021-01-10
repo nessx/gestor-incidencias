@@ -105,12 +105,14 @@ public class agregar extends Fragment {
         prioridad.setAdapter(adapter);
         //end
 
+        final EditText txtIncidencia = agregar.findViewById(R.id.txtincidencia);
+        final EditText txtDescripcio = agregar.findViewById(R.id.txtdescripcio);
+        txtIncidencia.setHint(R.string.in_title);
+        txtDescripcio.setHint(R.string.in_des);
+
         btnafegirIncidencia.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String prioritat = prioridad.getSelectedItem().toString();
-                EditText txtIncidencia = agregar.findViewById(R.id.txtincidencia);
-                txtIncidencia.setHint(R.string.in_title);
-                EditText txtDescripcio = agregar.findViewById(R.id.txtdescripcio);
 
                 // to string
                 String txtIncidenciaForm = txtIncidencia.getText().toString();

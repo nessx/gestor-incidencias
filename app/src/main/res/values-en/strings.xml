@@ -28,6 +28,7 @@
     <string name="in_type">Incident type</string>
     <string name="in_title">Title</string>
     <string name="in_add">Add</string>
+    <string name="in_des">Description</string>
     <string name="in_sel">Type of incident ...</string>
     <string name="menu_ajustes">Settings</string>
     <string name="title">Incidents</string>
